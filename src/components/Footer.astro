@@ -1,0 +1,51 @@
+---
+import { SUPPORT_EMAIL } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="wrap inner">
+    <div class="left">
+      <img src="/logo.png" alt="" width="26" height="26" />
+      <span class="wordmark">U;Good?</span>
+      <span>© 2026</span>
+    </div>
+    <div class="right">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+      <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+  }
+  .inner {
+    padding-top: 36px;
+    padding-bottom: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+    color: var(--ink-tertiary);
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .left .wordmark {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+</style>

@@ -1,0 +1,464 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+import PhoneMock from '../components/PhoneMock.astro';
+import { features, faqTeaser } from '../data/landing';
+---
+
+<Layout
+  title="U;Good? — How are you, really?"
+  description="U;Good? is a quiet little app for checking in with the people you trust. Pick a color, say as much or as little as you want, and let your circle know how you're doing."
+>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <div class="mood-dots">
+        <span class="dot" style="background:#34A853"></span>
+        <span class="dot" style="background:#FBBC05"></span>
+        <span class="dot" style="background:#EA4335"></span>
+      </div>
+      <h1>How are you, really?</h1>
+      <p class="lede">
+        U;Good? is a quiet little app for checking in with the people you trust. Pick a color, say as
+        much—or as little—as you want, and let your circle know how you're doing.
+      </p>
+      <div id="download" class="download">
+        <StoreBadges variant="dark" />
+      </div>
+      <p class="caption">
+        Free on iPhone and Android. Circles are invite-only, so start by inviting the people you trust.
+      </p>
+    </div>
+    <PhoneMock />
+  </section>
+
+  <section class="manifesto">
+    <div class="wrap manifesto-inner">
+      <div class="manifesto-head">
+        <div class="headline">This isn't social media.</div>
+        <div class="subhead">No likes. No performance. Just honesty.</div>
+      </div>
+      <div class="manifesto-body">
+        <p>
+          There's no feed to scroll, no follower count to grow, no post to get right. Just a color, a
+          few words if you want them, and a handful of people who actually care how you're doing.
+        </p>
+        <p>Only people you trust belong here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap how-it-works">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Checking in takes about ten seconds.</h2>
+    </div>
+    <div class="steps">
+      <div class="card">
+        <div class="motif dots">
+          <span style="background:#34A853"></span>
+          <span style="background:#FBBC05"></span>
+          <span style="background:#EA4335"></span>
+        </div>
+        <div class="card-title">1. Pick a color.</div>
+        <p>Green, yellow, or red. That's the whole check-in if you want it to be. Your history stays private to you.</p>
+      </div>
+      <div class="card">
+        <div class="motif bars">
+          <span style="width:26px;background:#3D5A80"></span>
+          <span style="width:44px;background:#98C1D9"></span>
+          <span style="width:18px;background:#E6E9ED"></span>
+        </div>
+        <div class="card-title">2. Add a few words. Or don't.</div>
+        <p>Say as much—or as little—as you want. There's no pressure to explain, and nothing to perform.</p>
+      </div>
+      <div class="card">
+        <div class="motif chips">
+          <span class="chip">Thinking of you</span>
+          <span class="chip">Sending love</span>
+        </div>
+        <div class="card-title">3. Your circle responds with care.</div>
+        <p>People you've invited get a gentle notification and reply with a caring response. No chat threads, no dogpiles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap feature-grid">
+    <h2>Everything you need. Nothing you don't.</h2>
+    <div class="grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <span class="dot" style={`background:${f.dot}`}></span>
+          <div class="title">{f.title}</div>
+          <p>{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="safety-band">
+    <div class="wrap safety-inner">
+      <div class="safety-copy">
+        <div class="eyebrow">Trust &amp; safety</div>
+        <h2>Safe by design, not by moderation.</h2>
+        <p>
+          There's no way to send a stranger a message in U;Good?, because there are no strangers and
+          there are no messages. It's a simple structure that makes a lot of bad things impossible.
+        </p>
+      </div>
+      <div class="safety-cards">
+        <div class="safety-card">
+          <span class="dot"></span>
+          <div>
+            <div class="title">No strangers</div>
+            <div class="body">Invite-only circles. No public feed, no discovery, no way for someone you don't know to find you.</div>
+          </div>
+        </div>
+        <div class="safety-card">
+          <span class="dot"></span>
+          <div>
+            <div class="title">No chat</div>
+            <div class="body">Replies come from a set of caring, predefined responses. No free text, no photos, nothing to be misused.</div>
+          </div>
+        </div>
+        <div class="safety-card">
+          <span class="dot"></span>
+          <div>
+            <div class="title">No performance</div>
+            <div class="body">No likes, no streaks, no audience. Ages 13+, with parental permission under 18.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap faq-teaser">
+    <div class="faq-head">
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      {faqTeaser.map((q) => (
+        <div class="faq-item">
+          <div class="q">{q.q}</div>
+          <p class="a">{q.a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap closing-cta-wrap">
+    <div class="closing-cta">
+      <div class="headline">Ready to begin? Let's make checking in easy, fun, and full of care.</div>
+      <StoreBadges variant="light" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: 40px 24px 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 520px;
+  }
+  .mood-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .mood-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+  }
+  .lede {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    text-wrap: pretty;
+  }
+  .download {
+    padding-top: 6px;
+  }
+  .caption {
+    margin: 0;
+    font-size: 13px;
+    color: var(--ink-tertiary);
+  }
+
+  .manifesto {
+    background: var(--brand);
+    color: #fff;
+  }
+  .manifesto-inner {
+    padding: 88px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    align-items: end;
+  }
+  .manifesto-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .headline {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+  .subhead {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.25;
+    color: var(--brand-secondary);
+  }
+  .manifesto-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--band-tint-deep);
+    max-width: 460px;
+  }
+  .manifesto-body p {
+    margin: 0;
+  }
+
+  .how-it-works {
+    padding: 96px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 560px;
+  }
+  .section-head h2,
+  .feature-grid h2,
+  .faq-head h2,
+  .safety-copy h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+  }
+  .motif {
+    height: 26px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .motif.dots span {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+  .motif.bars span {
+    height: 10px;
+    border-radius: 5px;
+  }
+  .motif.chips {
+    gap: 6px;
+  }
+  .chip {
+    border: 1px solid var(--brand-secondary);
+    color: var(--brand);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .card-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 22px;
+  }
+  .card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+  }
+
+  .feature-grid {
+    padding: 56px 24px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .feature-grid h2 {
+    max-width: 560px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border-radius: 18px;
+    background: var(--surface-tint);
+  }
+  .feature-card .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .feature-card .title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 6px;
+  }
+  .feature-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+  }
+
+  .safety-band {
+    background: var(--surface-blue-tint);
+  }
+  .safety-inner {
+    padding: 88px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
+  }
+  .safety-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .safety-copy p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: 460px;
+  }
+  .safety-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .safety-card {
+    display: flex;
+    gap: 16px;
+    padding: 22px 24px;
+    background: var(--surface);
+    border-radius: 16px;
+  }
+  .safety-card .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--brand);
+    margin-top: 7px;
+    flex: none;
+  }
+  .safety-card .title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .safety-card .body {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+    margin-top: 4px;
+  }
+
+  .faq-teaser {
+    padding: 96px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .faq-item {
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .faq-item .q {
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .faq-item .a {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+  }
+
+  .closing-cta-wrap {
+    padding: 0 24px 96px;
+  }
+  .closing-cta {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 28px;
+    padding: clamp(40px, 6vw, 72px);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .closing-cta .headline {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+    max-width: 640px;
+    text-wrap: pretty;
+  }
+</style>

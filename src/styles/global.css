@@ -1,0 +1,90 @@
+:root {
+  /* Colors */
+  --brand: #3D5A80;
+  --brand-hover: #2C4460;
+  --brand-secondary: #98C1D9;
+  --mood-good: #34A853;
+  --mood-okay: #FBBC05;
+  --mood-notgood: #EA4335;
+  --ink: #0D1117;
+  --ink-secondary: #4A5563;
+  --ink-tertiary: #6B7480;
+  --bg-page: #FBFBFA;
+  --surface: #FFFFFF;
+  --surface-tint: #F2F4F6;
+  --surface-blue-tint: #EEF4F8;
+  --band-tint-deep: #E3EEF5;
+  --border: #E6E9ED;
+
+  /* Phone mock (dark) */
+  --phone-screen-bg: #161B22;
+  --phone-card-bg: #1B2129;
+  --phone-card-border: #2A323D;
+  --phone-inset-bg: #1E252E;
+  --phone-text-primary: #F3F5F7;
+  --phone-text-secondary: #A9B1BB;
+  --phone-status-good: #34D07A;
+  --phone-status-good-bg: #1F3A2C;
+  --phone-status-okay: #F4C430;
+  --phone-status-okay-bg: #3A3520;
+  --phone-status-notgood: #F0605A;
+  --phone-status-notgood-bg: #3A2426;
+
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --content-max: 1120px;
+  --prose-max: 680px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  text-wrap: pretty;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrap {
+  max-width: var(--content-max);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--brand);
+}

@@ -1,0 +1,242 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { standards } from '../data/safety';
+import { SUPPORT_EMAIL } from '../data/site';
+---
+
+<Layout
+  title="Trust & Safety — U;Good?"
+  description="U;Good? is designed so the bad parts of the internet can't happen here: no strangers, no chat, no performance."
+>
+  <section class="wrap header">
+    <div class="eyebrow">Trust &amp; safety</div>
+    <h1>Built so the bad parts of the internet can't happen here.</h1>
+    <p class="lede">
+      Most apps keep people safe by moderating what goes wrong. U;Good? is designed so that most of it
+      can't go wrong in the first place. Here's how.
+    </p>
+  </section>
+
+  <section class="pillars">
+    <div class="wrap pillars-inner">
+      <div class="pillar">
+        <div class="pillar-title">No strangers</div>
+        <p>Circles are invite-only. There is no public feed, no search, no suggested people, and no way for someone you didn't invite to see or contact you.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">No chat</div>
+        <p>There is no free-text messaging and no way to send photos or media. Responses come from a set of predefined caring replies, so no user-generated content can be exchanged.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-title">No performance</div>
+        <p>No likes, no follower counts, no streaks. A check-in is a color and, optionally, a few words for people who already care about you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap standards">
+    <div class="standards-head">
+      <h2>Our standards</h2>
+      <p>These rules apply to everyone who uses U;Good?, in every circle.</p>
+    </div>
+    <div class="standards-list">
+      {standards.map((s) => (
+        <div class="standard-row">
+          <span class="dot" style={`background:${s.dot}`}></span>
+          <div class="standard-body">
+            <div class="title">{s.title}</div>
+            <p>{s.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="reporting">
+    <div class="wrap reporting-inner">
+      <div class="reporting-copy">
+        <h2>Something doesn't feel right?</h2>
+        <p>
+          Tell us. Every report is read by a person and taken seriously. If a child is at immediate
+          risk, contact your local emergency services first.
+        </p>
+      </div>
+      <div class="reporting-card">
+        <div class="eyebrow">Safety contact</div>
+        <a href={`mailto:${SUPPORT_EMAIL}`} class="contact-email">{SUPPORT_EMAIL}</a>
+        <p>Reports of child sexual abuse or exploitation are removed and referred to the appropriate authorities.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .header {
+    padding: 56px 24px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+    max-width: 760px;
+    text-wrap: pretty;
+  }
+  .lede {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    max-width: 640px;
+    text-wrap: pretty;
+  }
+
+  .pillars {
+    background: var(--brand);
+    color: #fff;
+  }
+  .pillars-inner {
+    padding: 72px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 36px;
+  }
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pillar-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+  }
+  .pillar p {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--band-tint-deep);
+  }
+
+  .standards {
+    padding: 88px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
+  }
+  .standards-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .standards-head h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+  }
+  .standards-head p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: 440px;
+  }
+  .standards-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .standard-row {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+  .standard-row .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+  .standard-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .standard-body .title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .standard-body p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+  }
+
+  .reporting {
+    background: var(--surface-blue-tint);
+  }
+  .reporting-inner {
+    padding: 72px 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 36px;
+    align-items: center;
+  }
+  .reporting-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .reporting-copy h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+  }
+  .reporting-copy p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: 480px;
+  }
+  .reporting-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .reporting-card .eyebrow {
+    color: var(--ink-tertiary);
+  }
+  .contact-email {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(20px, 2.4vw, 26px);
+    word-break: break-all;
+  }
+  .reporting-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import { LEGAL_EMAIL, LEGAL_ADDRESS, SITE_URL } from '../data/site';
+
+interface Props {
+  eyebrow: string;
+  intro: string;
+  department: string;
+}
+const { eyebrow, intro, department } = Astro.props;
+---
+
+<div id="contact" class="contact-card">
+  <div class="eyebrow">{eyebrow}</div>
+  <p>{intro}</p>
+  <div class="department">{department}</div>
+  <div class="address">
+    {LEGAL_ADDRESS.map((line, i) => (
+      <>
+        {line}
+        {i < LEGAL_ADDRESS.length - 1 && <br />}
+      </>
+    ))}
+  </div>
+  <div class="links">
+    <a href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a>
+    <a href={SITE_URL}>www.ugood.app</a>
+  </div>
+  <p class="copyright">© 2026 Poundo, Inc. All rights reserved.</p>
+</div>
+
+<style>
+  .contact-card {
+    background: var(--surface-blue-tint);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scroll-margin-top: 32px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--brand);
+    padding-bottom: 6px;
+  }
+  p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+  }
+  .department {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .address {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 4px;
+  }
+  .copyright {
+    font-size: 14px;
+    color: var(--ink-tertiary);
+    padding-top: 8px;
+  }
+</style>

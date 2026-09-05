@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { faqs } from '../data/faq';
+import { SUPPORT_EMAIL } from '../data/site';
+---
+
+<Layout
+  title="FAQ — U;Good?"
+  description="Common questions about U;Good?, the quiet app for checking in with the people you trust."
+>
+  <section class="wrap faq-page">
+    <div class="faq-sidebar">
+      <div class="eyebrow">FAQ</div>
+      <h1>Questions, answered.</h1>
+      <p>Didn't find yours? Write to <a href={`mailto:${SUPPORT_EMAIL}`} class="strong">{SUPPORT_EMAIL}</a>.</p>
+    </div>
+    <div class="accordion">
+      {faqs.map((q) => (
+        <details>
+          <summary>
+            <span>{q.q}</span>
+            <span class="toggle" aria-hidden="true">+</span>
+          </summary>
+          <p>{q.a}</p>
+        </details>
+      ))}
+      <div class="closing-line"></div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-page {
+    padding: 56px 24px 88px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
+    align-items: start;
+  }
+  .faq-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: sticky;
+    top: 32px;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+    text-wrap: pretty;
+  }
+  .faq-sidebar p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    max-width: 420px;
+  }
+  .strong {
+    font-weight: 600;
+  }
+
+  .accordion {
+    display: flex;
+    flex-direction: column;
+  }
+  .accordion details {
+    border-top: 1px solid var(--border);
+  }
+  .accordion summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  .accordion summary::-webkit-details-marker {
+    display: none;
+  }
+  .toggle {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--surface-blue-tint);
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+  .accordion details[open] .toggle {
+    transform: rotate(45deg);
+  }
+  .accordion p {
+    margin: 0;
+    padding: 0 48px 24px 0;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    text-wrap: pretty;
+  }
+  .closing-line {
+    border-top: 1px solid var(--border);
+  }
+</style>

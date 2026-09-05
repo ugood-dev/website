@@ -1,0 +1,69 @@
+---
+interface Props {
+  active?: 'privacy' | 'terms';
+}
+const { active } = Astro.props;
+---
+
+<nav class="nav wrap">
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="U;Good? logo" width="36" height="36" />
+    <span class="wordmark">U;Good?</span>
+  </a>
+  <div class="links">
+    <a href="/privacy" class:list={{ current: active === 'privacy' }}>Privacy Policy</a>
+    <a href="/terms" class:list={{ current: active === 'terms' }}>Terms</a>
+    <a href="/#download" class="cta">Get the app</a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand:hover {
+    text-decoration: none;
+  }
+  .wordmark {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.2px;
+  }
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .links a {
+    color: var(--brand);
+  }
+  .links a.current {
+    color: var(--ink);
+  }
+  .cta {
+    background: var(--brand);
+    color: #fff !important;
+    padding: 9px 16px;
+    border-radius: 999px;
+    text-decoration: none !important;
+    transition: background 150ms ease;
+  }
+  .cta:hover {
+    background: var(--brand-hover);
+  }
+</style>

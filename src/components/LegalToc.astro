@@ -1,0 +1,46 @@
+---
+import type { TocEntry } from '../data/legal-types';
+
+interface Props {
+  toc: TocEntry[];
+}
+const { toc } = Astro.props;
+---
+
+<nav class="toc">
+  <div class="eyebrow-muted">Contents</div>
+  {toc.map((t) => (
+    <a href={t.href}>{t.label}</a>
+  ))}
+</nav>
+
+<style>
+  .toc {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: sticky;
+    top: 32px;
+    max-width: 300px;
+  }
+  .eyebrow-muted {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    padding-bottom: 10px;
+  }
+  .toc a {
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--ink-secondary);
+    padding: 7px 0;
+    border-bottom: 1px solid #F0F2F4;
+    text-decoration: none;
+  }
+  .toc a:hover {
+    color: var(--brand);
+    text-decoration: none;
+  }
+</style>

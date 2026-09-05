@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalToc from '../components/LegalToc.astro';
+import LegalSection from '../components/LegalSection.astro';
+import LegalContactCard from '../components/LegalContactCard.astro';
+import { privacySections } from '../data/legal-privacy';
+import { buildToc } from '../data/legal-types';
+
+const toc = buildToc(privacySections, '11. Contact Us');
+---
+
+<Layout
+  title="Privacy Policy — U;Good?"
+  description="How Poundo, Inc. collects, uses, shares, and protects information through the U;Good? platform."
+  activeNav="privacy"
+>
+  <section class="wrap page-header">
+    <div class="eyebrow">Legal</div>
+    <h1>U;Good? Privacy Policy</h1>
+    <p class="effective">Effective Date: June, 2026</p>
+    <p class="intro">
+      This Privacy Policy explains how <strong>Poundo, Inc.</strong> collects, uses, shares, and
+      protects information through the <strong>U;Good?</strong> platform.
+    </p>
+  </section>
+
+  <section class="wrap legal-body">
+    <LegalToc toc={toc} />
+    <div class="sections">
+      {privacySections.map((section) => (
+        <LegalSection section={section} privacyHref="/privacy" />
+      ))}
+      <LegalContactCard
+        eyebrow="Contact us"
+        intro="Privacy questions or requests may be directed to:"
+        department="Privacy Team"
+      />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 48px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(34px, 4.6vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+  }
+  .effective {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink-tertiary);
+  }
+  .intro {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: var(--prose-max);
+    text-wrap: pretty;
+  }
+  .intro strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .legal-body {
+    padding: 24px 24px 88px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 56px;
+    align-items: start;
+  }
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    min-width: 0;
+  }
+</style>

@@ -1,0 +1,318 @@
+---
+import { heroPeople } from '../data/landing';
+---
+
+<div class="phone-wrap">
+  <div class="halo"></div>
+  <div class="frame">
+    <div class="notch"></div>
+    <div class="screen">
+      <div class="greeting">
+        <span class="avatar">
+          M
+          <span class="presence"></span>
+        </span>
+        <div class="greeting-text">
+          <span class="hi">Hi, Maya</span>
+          <span class="sub">Check in on your people</span>
+        </div>
+      </div>
+
+      <div class="segmented">
+        <span class="seg active">Circles</span>
+        <span class="seg">Spaces</span>
+      </div>
+
+      <div class="groups-row">
+        <span class="groups-title">Groups</span>
+        <span class="create-group">+ Create Group</span>
+      </div>
+
+      <div class="empty-inset">
+        Groups are a convenient way to check in on multiple people at once. Create a group to get started.
+      </div>
+
+      <span class="people-title">People</span>
+
+      {heroPeople.map((p) => (
+        <div class="person-card">
+          <span
+            class="person-avatar"
+            style={`background:${p.avatar};border-color:${p.ring}`}
+          >
+            {p.initials}
+            <span class="status-dot" style={`background:${p.ring}`}></span>
+          </span>
+          <div class="person-info">
+            <span class="person-name">{p.name}</span>
+            <span class="status-chip" style={`background:${p.chipBg};color:${p.ring}`}>
+              <span class="chip-dot" style={`background:${p.ring}`}></span>
+              {p.status}
+            </span>
+          </div>
+        </div>
+      ))}
+
+      <span class="fab" aria-hidden="true">+</span>
+
+      <div class="tabbar">
+        <span class="tab active">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#98C1D9" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 10.2 12 3.5l8.5 6.7V20a.8.8 0 0 1-.8.8h-4.4v-6h-6.6v6H4.3a.8.8 0 0 1-.8-.8z"/></svg>
+          Home
+        </span>
+        <span class="tab">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A9B1BB" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="3.1"/><path d="M19.4 14.5a1.4 1.4 0 0 0 .3 1.5l.1.1a1.6 1.6 0 1 1-2.3 2.3l-.1-.1a1.4 1.4 0 0 0-2.4 1v.3a1.6 1.6 0 1 1-3.2 0v-.2a1.4 1.4 0 0 0-2.4-1l-.1.1a1.6 1.6 0 1 1-2.3-2.3l.1-.1a1.4 1.4 0 0 0-1-2.4H6a1.6 1.6 0 1 1 0-3.2h.2a1.4 1.4 0 0 0 1-2.4l-.1-.1a1.6 1.6 0 1 1 2.3-2.3l.1.1a1.4 1.4 0 0 0 2.4-1V4a1.6 1.6 0 1 1 3.2 0v.2a1.4 1.4 0 0 0 2.4 1l.1-.1a1.6 1.6 0 1 1 2.3 2.3l-.1.1a1.4 1.4 0 0 0 1 2.4h.1a1.6 1.6 0 1 1 0 3.2h-.2a1.4 1.4 0 0 0-1.3.9z"/></svg>
+          Settings
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phone-wrap {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-height: 640px;
+  }
+  .halo {
+    position: absolute;
+    inset: 40px 0 0;
+    background: radial-gradient(ellipse at 50% 40%, #D3E2EC 0%, rgba(211, 226, 236, 0) 70%);
+  }
+  .frame {
+    width: 402px;
+    height: 874px;
+    transform: scale(0.72);
+    transform-origin: top center;
+    position: relative;
+    margin-bottom: -240px;
+    background: #0a0d12;
+    border-radius: 54px;
+    padding: 14px;
+    box-shadow: 0 30px 60px rgba(13, 17, 23, 0.25);
+  }
+  .notch {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    background: #0a0d12;
+    border-radius: 0 0 18px 18px;
+    z-index: 2;
+  }
+  .screen {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    padding: 66px 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: var(--phone-screen-bg);
+    color: var(--phone-text-primary);
+    overflow: hidden;
+  }
+  .greeting {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .avatar {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--brand-secondary);
+    border: 3px solid var(--phone-status-good);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    flex: none;
+  }
+  .presence {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--phone-status-good);
+    border: 2px solid var(--phone-screen-bg);
+  }
+  .greeting-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hi {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.1;
+    color: var(--phone-text-primary);
+  }
+  .sub {
+    font-size: 15px;
+    color: var(--phone-text-secondary);
+  }
+  .segmented {
+    display: flex;
+    background: var(--phone-inset-bg);
+    border-radius: 999px;
+  }
+  .seg {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    border-radius: 999px;
+    color: var(--phone-text-secondary);
+    font-size: 17px;
+  }
+  .seg.active {
+    background: linear-gradient(90deg, #3D5A80, #4E6E96);
+    color: #fff;
+    font-weight: 500;
+  }
+  .groups-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+  }
+  .groups-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .create-group {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--brand-secondary);
+  }
+  .empty-inset {
+    background: var(--phone-inset-bg);
+    border-radius: 18px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--phone-text-secondary);
+  }
+  .people-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 20px;
+    padding-top: 6px;
+  }
+  .person-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--phone-card-bg);
+    border: 1px solid var(--phone-card-border);
+    border-radius: 20px;
+    padding: 16px;
+  }
+  .person-avatar {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border-width: 3px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    flex: none;
+  }
+  .status-dot {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--phone-card-bg);
+  }
+  .person-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .person-name {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .status-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .fab {
+    position: absolute;
+    right: 20px;
+    bottom: 110px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3D5A80, #2E9E5A);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .tabbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 96px;
+    background: var(--phone-screen-bg);
+    border-top: 1px solid var(--phone-card-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 14px 40px 0;
+    font-size: 13px;
+  }
+  .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--phone-text-secondary);
+  }
+  .tab.active {
+    color: var(--brand-secondary);
+    font-weight: 500;
+  }
+
+  @media (max-width: 599px) {
+    .phone-wrap {
+      min-height: 480px;
+    }
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../data/site';
+
+interface Props {
+  variant?: 'dark' | 'light';
+}
+const { variant = 'dark' } = Astro.props;
+---
+
+<div class:list={['badges', variant]}>
+  <a
+    href={APP_STORE_URL}
+    target="_blank"
+    rel="noopener"
+    class="badge"
+    aria-label="Download U;Good? on the App Store"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+      ><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.8-3.1-.8C6.1 7.5 3.8 9.4 3.8 13c0 1.1.2 2.3.6 3.5.6 1.6 2.6 5.5 4.7 5.4 1.1 0 1.9-.8 3.3-.8s2.1.8 3.4.8c2.1 0 3.9-3.6 4.5-5.2-2.8-1.3-3.9-3.5-3.9-4zM14 5.5c1.1-1.3 1-2.5 1-3-1 .1-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.5z"
+    /></svg>
+    <span class="label">
+      <span class="sub">Download on the</span>
+      <span class="main">App Store</span>
+    </span>
+  </a>
+  <a
+    href={GOOGLE_PLAY_URL}
+    target="_blank"
+    rel="noopener"
+    class="badge"
+    aria-label="Download U;Good? on Google Play"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 3.5v17c0 .6.7 1 1.2.7L19.6 12.7c.5-.3.5-1.1 0-1.4L5.2 2.8C4.7 2.5 4 2.9 4 3.5z" fill="#34A853"/>
+      <path d="M4.4 3.1l9.9 9-9.9 9c-.2-.2-.4-.4-.4-.7V3.8c0-.3.2-.6.4-.7z" fill="#FBBC05"/>
+      <path d="M14.3 12.1l3.3-3-12.4-6.9c-.3-.2-.7-.1-.9.1l10 9.8z" fill="#EA4335" opacity=".9"/>
+      <path d="M14.3 12.1l-10 9.7c.3.3.7.3 1 .1l12.4-7-3.4-2.8z" fill="#3D5A80" opacity=".9"/>
+    </svg>
+    <span class="label">
+      <span class="sub">Get it on</span>
+      <span class="main">Google Play</span>
+    </span>
+  </a>
+</div>
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    padding: 10px 16px 10px 12px;
+    text-decoration: none !important;
+    min-width: 168px;
+    transition: background 150ms ease;
+  }
+  .badge svg {
+    flex: none;
+  }
+  .label {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .sub {
+    font-size: 10px;
+  }
+  .main {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .dark .badge {
+    background: var(--ink);
+    color: #fff;
+  }
+  .dark .sub {
+    opacity: 0.75;
+  }
+  .dark .badge:hover {
+    background: #2A3340;
+  }
+
+  .light .badge {
+    background: #fff;
+    color: var(--ink);
+  }
+  .light .sub {
+    opacity: 0.7;
+  }
+  .light .badge:hover {
+    background: var(--band-tint-deep);
+  }
+</style>
