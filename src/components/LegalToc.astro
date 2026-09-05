@@ -19,9 +19,20 @@ const { toc } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 2px;
-    position: sticky;
-    top: 32px;
     max-width: 300px;
+  }
+  /* Only pin the rail once the page is two columns. Stacked, it sits above the
+     body and pinning it makes the text scroll underneath. Keep this breakpoint
+     in step with .legal-body in privacy.astro and terms.astro. */
+  @media (min-width: 768px) {
+    .toc {
+      position: sticky;
+      top: 32px;
+      /* On short viewports the rail is taller than the screen, so let it
+         scroll on its own rather than hiding its last entries. */
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
   }
   .eyebrow-muted {
     font-size: 13px;

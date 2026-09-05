@@ -78,6 +78,7 @@ import { heroPeople } from '../data/landing';
     /* The frame keeps its 402px design width and is scaled down visually, but a
        transform doesn't shrink the layout box, so it would widen the page on
        narrow screens. Clip horizontally only, to keep the drop shadow below. */
+    overflow-x: hidden; /* fallback for Safari < 16 */
     overflow-x: clip;
   }
   .halo {

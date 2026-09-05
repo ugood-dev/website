@@ -33,7 +33,7 @@ import { SUPPORT_EMAIL } from '../data/site';
   .faq-page {
     padding: 56px 24px 88px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 48px;
     align-items: start;
   }
@@ -41,8 +41,15 @@ import { SUPPORT_EMAIL } from '../data/site';
     display: flex;
     flex-direction: column;
     gap: 18px;
-    position: sticky;
-    top: 32px;
+  }
+  @media (min-width: 768px) {
+    .faq-page {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .faq-sidebar {
+      position: sticky;
+      top: 32px;
+    }
   }
   h1 {
     margin: 0;
