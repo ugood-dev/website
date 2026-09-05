@@ -8,5 +8,5 @@ export const faqs = [
   { q: 'Is it safe for teens?', a: "It's built to be. There are no strangers, no chat, and no public feed. You must be at least 13 to use U;Good?, and under 18s need a parent or guardian's permission. Read more on our Safety page." },
   { q: 'Which phones does it work on?', a: "iPhone and Android. Sign in with Google or Apple; there's no new password to remember." },
   { q: 'Will I get notifications?', a: 'Yes, when someone in your circle checks in. You can turn them off any time in settings.' },
-  { q: 'How do I get help?', a: 'Email evans@ugood.app. A real person reads every message.' },
+  { q: 'How do I get help?', a: 'Email admin@ugood.app. A real person reads every message.' },
 ];

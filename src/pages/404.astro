@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page not found — U;Good?"
+  description="That page doesn't exist. Head back to the U;Good? home page."
+  noindex
+>
+  <section class="wrap notfound">
+    <div class="eyebrow">404</div>
+    <h1>This page isn't here.</h1>
+    <p>The link may be old, or the address slightly off. Everything else is where you left it.</p>
+    <div class="links">
+      <a href="/" class="cta">Back to home</a>
+      <a href="/faq">Read the FAQ</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .notfound {
+    padding: 96px 24px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+  }
+  p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    max-width: 480px;
+    text-wrap: pretty;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin-top: 14px;
+  }
+  .cta {
+    background: var(--brand);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 150ms ease;
+  }
+  .cta:hover {
+    background: var(--brand-hover);
+  }
+  .links a:not(.cta) {
+    font-weight: 600;
+    color: var(--ink-secondary);
+  }
+</style>

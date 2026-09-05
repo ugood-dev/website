@@ -31,3 +31,18 @@ npm run preview
 ```
 
 Requires Node `^18.17.1 || ^20.3.0 || >=22.0.0` (Astro 5's supported range).
+
+## Deployment
+
+Pushing to `main` builds the site and publishes it to GitHub Pages via `.github/workflows/deploy.yml`. Nothing is committed from `dist/` — the workflow builds it fresh.
+
+The canonical address is the apex `ugood.app`; GitHub redirects `www.ugood.app` to it. `public/CNAME` keeps the domain attached across deploys, and `astro.config.mjs` sets the matching origin for canonical URLs.
+
+One-time setup on the repo:
+
+1. Settings → Pages → Source: **GitHub Actions**.
+2. Settings → Pages → Custom domain: `ugood.app`, then enable **Enforce HTTPS** once the certificate is issued.
+
+DNS already points at GitHub (apex `A` records plus a `www` `CNAME` to `ugood-dev.github.io`) and needs no change. The domain was previously claimed by the `website-under-construction` repo and must be removed there before this repo can take it.
+
+The site is served from the domain root, so no `base` is needed and root-absolute links like `/privacy` resolve as written. If it ever moves to the default `ugood-dev.github.io/website/` URL, set `base` **and** rewrite the absolute links in `Nav.astro`, `Footer.astro`, and `Layout.astro` — Astro does not rewrite hand-written href strings.
