@@ -103,7 +103,7 @@ import { SUPPORT_EMAIL } from '../data/site';
   .pillars-inner {
     padding: 72px 24px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
     gap: 36px;
   }
   .pillar {
@@ -128,7 +128,7 @@ import { SUPPORT_EMAIL } from '../data/site';
   .standards {
     padding: 88px 24px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 48px;
   }
   .standards-head {
@@ -192,7 +192,7 @@ import { SUPPORT_EMAIL } from '../data/site';
   .reporting-inner {
     padding: 72px 24px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 36px;
     align-items: center;
   }

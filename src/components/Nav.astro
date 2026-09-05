@@ -66,4 +66,27 @@ const { active } = Astro.props;
   .cta:hover {
     background: var(--brand-hover);
   }
+
+  /* Below ~600px the brand and all three links can't share a row without
+     colliding, so the links drop to a second row with the CTA pushed right. */
+  @media (max-width: 599px) {
+    .nav {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+    .links {
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      font-size: 13.5px;
+    }
+    .links a {
+      white-space: nowrap;
+    }
+    .cta {
+      margin-left: auto;
+    }
+  }
 </style>
