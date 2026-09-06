@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import StoreBadges from '../components/StoreBadges.astro';
 import PhoneMock from '../components/PhoneMock.astro';
-import { features, faqTeaser } from '../data/landing';
+import CrisisCard from '../components/CrisisCard.astro';
+import { features, faqTeaser, circleFacts, spaceFacts } from '../data/landing';
 ---
 
 <Layout
@@ -18,14 +19,15 @@ import { features, faqTeaser } from '../data/landing';
       </div>
       <h1>How are you, really?</h1>
       <p class="lede">
-        U;Good? is a quiet little app for checking in with the people you trust. Pick a color, say as
-        much—or as little—as you want, and let your circle know how you're doing.
+        U;Good? is a quiet little app for checking in with the people you trust. Every interaction is a
+        single tap — there is no chat, no feed, and nothing to write.
       </p>
       <div id="download" class="download">
         <StoreBadges variant="dark" />
       </div>
       <p class="caption">
-        Free on iPhone and Android. Circles are invite-only, so start by inviting the people you trust.
+        On iPhone and Android. Access is invite-only: enter a 6-digit invite code, or join the waitlist
+        and we'll email you when it's your turn.
       </p>
     </div>
     <PhoneMock />
@@ -40,7 +42,7 @@ import { features, faqTeaser } from '../data/landing';
       <div class="manifesto-body">
         <p>
           There's no feed to scroll, no follower count to grow, no post to get right. Just a color, a
-          few words if you want them, and a handful of people who actually care how you're doing.
+          single tap, and a handful of people who actually care how you're doing.
         </p>
         <p>Only people you trust belong here.</p>
       </div>
@@ -50,17 +52,24 @@ import { features, faqTeaser } from '../data/landing';
   <section class="wrap how-it-works">
     <div class="section-head">
       <div class="eyebrow">How it works</div>
-      <h2>Checking in takes about ten seconds.</h2>
+      <h2>A check-in is three taps, start to finish.</h2>
     </div>
     <div class="steps">
       <div class="card">
         <div class="motif dots">
-          <span style="background:#34A853"></span>
-          <span style="background:#FBBC05"></span>
-          <span style="background:#EA4335"></span>
+          <span style="background:#98C1D9"></span>
+          <span style="background:#3D5A80"></span>
         </div>
-        <div class="card-title">1. Pick a color.</div>
-        <p>Green, yellow, or red. That's the whole check-in if you want it to be. Your history stays private to you.</p>
+        <div class="card-title">1. Ask "U;Good?"</div>
+        <p>A check-in is that one question. One tap sends it to anyone in your Circle, up to three times a day. In a Space, the admin asks the whole group at once.</p>
+      </div>
+      <div class="card">
+        <div class="motif chips">
+          <span class="chip">I'm Good</span>
+          <span class="chip">Call Me</span>
+        </div>
+        <div class="card-title">2. They answer in one tap.</div>
+        <p>Six fixed replies, no typing: I'm Good · No, I'm Not · Call Me · Text Me · I'm Tired · I'm Hungry.</p>
       </div>
       <div class="card">
         <div class="motif bars">
@@ -68,16 +77,45 @@ import { features, faqTeaser } from '../data/landing';
           <span style="width:44px;background:#98C1D9"></span>
           <span style="width:18px;background:#E6E9ED"></span>
         </div>
-        <div class="card-title">2. Add a few words. Or don't.</div>
-        <p>Say as much—or as little—as you want. There's no pressure to explain, and nothing to perform.</p>
+        <div class="card-title">3. You see how to help.</div>
+        <p>Their answer opens a screen made for it — "Priya wants you to call" — so support turns into something you actually do.</p>
       </div>
-      <div class="card">
-        <div class="motif chips">
-          <span class="chip">Thinking of you</span>
-          <span class="chip">Sending love</span>
+    </div>
+  </section>
+
+  <section class="wrap compare">
+    <div class="section-head" style="max-width:600px">
+      <div class="eyebrow">Two ways to stay close</div>
+      <h2>Your Circle, and your Spaces.</h2>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head">
+          <div class="compare-name">Circle</div>
+          <p>Your personal list of trusted contacts. Flat, one-to-one, no roles.</p>
         </div>
-        <div class="card-title">3. Your circle responds with care.</div>
-        <p>People you've invited get a gentle notification and reply with a caring response. No chat threads, no dogpiles.</p>
+        <div class="fact-list">
+          {circleFacts.map((f) => (
+            <div class="fact-row">
+              <span class="fact-key">{f.k}</span>
+              <span class="fact-value">{f.v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-head">
+          <div class="compare-name">Space</div>
+          <p>A private named group — Family, Roomies, Run Club — run by whoever made it.</p>
+        </div>
+        <div class="fact-list">
+          {spaceFacts.map((f) => (
+            <div class="fact-row">
+              <span class="fact-key">{f.k}</span>
+              <span class="fact-value">{f.v}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -95,14 +133,28 @@ import { features, faqTeaser } from '../data/landing';
     </div>
   </section>
 
+  <section class="wrap crisis-band">
+    <div class="crisis-copy">
+      <div class="eyebrow">If it's a hard day</div>
+      <h2>Log a rough mood, and help comes up on its own.</h2>
+      <p>
+        When you set your mood to something distressed, U;Good? immediately offers crisis lines for
+        your country — no searching, no forms. It's also always there in Settings, whatever your mood
+        says.
+      </p>
+    </div>
+    <CrisisCard />
+  </section>
+
   <section class="safety-band">
     <div class="wrap safety-inner">
       <div class="safety-copy">
         <div class="eyebrow">Trust &amp; safety</div>
         <h2>Safe by design, not by moderation.</h2>
         <p>
-          There's no way to send a stranger a message in U;Good?, because there are no strangers and
-          there are no messages. It's a simple structure that makes a lot of bad things impossible.
+          There's no way to send anyone a message in U;Good?, because messages don't exist. Every
+          interaction is a tap on a fixed option, which makes a lot of bad things structurally
+          impossible.
         </p>
       </div>
       <div class="safety-cards">
@@ -110,14 +162,14 @@ import { features, faqTeaser } from '../data/landing';
           <span class="dot"></span>
           <div>
             <div class="title">No strangers</div>
-            <div class="body">Invite-only circles. No public feed, no discovery, no way for someone you don't know to find you.</div>
+            <div class="body">Access is invite-only, and joining a Space needs the admin's approval. No public feed, no discovery, no stranger contact.</div>
           </div>
         </div>
         <div class="safety-card">
           <span class="dot"></span>
           <div>
             <div class="title">No chat</div>
-            <div class="body">Replies come from a set of caring, predefined responses. No free text, no photos, nothing to be misused.</div>
+            <div class="body">Nothing is typed anywhere in the app. Check-ins and replies are taps on predefined options, so there is no content to misuse.</div>
           </div>
         </div>
         <div class="safety-card">
@@ -318,6 +370,69 @@ import { features, faqTeaser } from '../data/landing';
     color: var(--ink-secondary);
   }
 
+  .compare {
+    padding: 56px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 24px;
+  }
+  .compare-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: var(--surface);
+  }
+  .compare-head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .compare-name {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.4px;
+  }
+  .compare-head p {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+  }
+  .fact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fact-row {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    padding-top: 12px;
+    border-top: 1px solid #F0F2F4;
+  }
+  .fact-key {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+  }
+  .fact-value {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
   .feature-grid {
     padding: 56px 24px 96px;
     display: flex;
@@ -356,6 +471,34 @@ import { features, faqTeaser } from '../data/landing';
     font-size: 14.5px;
     line-height: 1.55;
     color: var(--ink-secondary);
+  }
+
+  .crisis-band {
+    padding: 56px 24px 96px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 48px;
+    align-items: center;
+  }
+  .crisis-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .crisis-copy h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+  }
+  .crisis-copy p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: 480px;
   }
 
   .safety-band {

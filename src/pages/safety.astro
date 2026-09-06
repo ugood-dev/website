@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CrisisCard from '../components/CrisisCard.astro';
 import { standards } from '../data/safety';
 import { SUPPORT_EMAIL } from '../data/site';
 ---
@@ -21,15 +22,15 @@ import { SUPPORT_EMAIL } from '../data/site';
     <div class="wrap pillars-inner">
       <div class="pillar">
         <div class="pillar-title">No strangers</div>
-        <p>Circles are invite-only. There is no public feed, no search, no suggested people, and no way for someone you didn't invite to see or contact you.</p>
+        <p>Access to the app is invite-only, and joining a Space requires the admin's approval. There is no public feed, no search, and no suggested people.</p>
       </div>
       <div class="pillar">
         <div class="pillar-title">No chat</div>
-        <p>There is no free-text messaging and no way to send photos or media. Responses come from a set of predefined caring replies, so no user-generated content can be exchanged.</p>
+        <p>Nothing is typed anywhere in the app. A check-in is answered by tapping one of six fixed replies, so no user-generated content or media can be exchanged.</p>
       </div>
       <div class="pillar">
         <div class="pillar-title">No performance</div>
-        <p>No likes, no follower counts, no streaks. A check-in is a color and, optionally, a few words for people who already care about you.</p>
+        <p>No likes, no follower counts, no streaks. Your mood is a private log for people who already care about you, not a post.</p>
       </div>
     </div>
   </section>
@@ -50,6 +51,23 @@ import { SUPPORT_EMAIL } from '../data/site';
         </div>
       ))}
     </div>
+  </section>
+
+  <section class="wrap crisis-band">
+    <div class="crisis-copy">
+      <div class="eyebrow">Crisis lines</div>
+      <h2>Help offered before anyone has to ask.</h2>
+      <p>
+        Logging a distressed mood immediately brings up crisis lines for your country, detected
+        automatically. You can dismiss it with "I'm okay for now," and reach the same list any time
+        from Settings.
+      </p>
+      <p class="caveat">
+        U;Good? is not a crisis service and does not monitor anyone in real time. In an emergency, call
+        your local emergency number.
+      </p>
+    </div>
+    <CrisisCard />
   </section>
 
   <section class="reporting">
@@ -184,6 +202,38 @@ import { SUPPORT_EMAIL } from '../data/site';
     font-size: 15px;
     line-height: 1.55;
     color: var(--ink-secondary);
+  }
+
+  .crisis-band {
+    padding: 0 24px 88px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 48px;
+    align-items: center;
+  }
+  .crisis-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .crisis-copy h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+  }
+  .crisis-copy p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: 480px;
+  }
+  .crisis-copy .caveat {
+    font-size: 15px;
+    color: var(--ink-tertiary);
   }
 
   .reporting {

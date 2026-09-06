@@ -1,0 +1,73 @@
+---
+---
+
+<div class="crisis-card">
+  <div class="headline">You're not alone.</div>
+  <p class="sub">Need someone to talk to? Reach out to a crisis line.</p>
+  <div class="lines">
+    <div class="line">
+      <span class="name">988 Suicide &amp; Crisis Lifeline</span>
+      <span class="action">Call</span>
+    </div>
+    <div class="line">
+      <span class="name">Crisis Text Line</span>
+      <span class="action">Text</span>
+    </div>
+  </div>
+  <div class="dismiss">I'm okay for now.</div>
+</div>
+
+<style>
+  .crisis-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 440px;
+    width: 100%;
+    justify-self: end;
+  }
+  .headline {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.4px;
+  }
+  .sub {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--brand-secondary);
+  }
+  .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 4px;
+  }
+  .line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--phone-card-bg);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .name {
+    font-size: 15.5px;
+    font-weight: 500;
+  }
+  .action {
+    font-size: 14px;
+    color: var(--brand-secondary);
+  }
+  .dismiss {
+    font-size: 14px;
+    color: var(--phone-text-secondary);
+    padding-top: 4px;
+  }
+</style>
